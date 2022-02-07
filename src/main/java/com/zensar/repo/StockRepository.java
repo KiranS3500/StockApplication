@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.zensar.dto.Stock;
 import com.zensar.entity.StockEntity;
@@ -19,8 +20,8 @@ public interface StockRepository extends JpaRepository<StockEntity, Integer> {
 	@Query(value = "SELECT se FROM StockEntity AS se WHERE se.name LIKE ':nameLike'")
 	List<StockEntity> getNameLike(String nameLike);
 	
-	@Query(value = "SELECT * FROM Stock_Master sm WHERE sm.name LIKE %:nameLike%", nativeQuery = true)
-	List<StockEntity> getNameLikeUsingSQL(String nameLike);
+	@Query(value="SELECT * FROM Stock_Master sm WHERE sm.name LIKE %:nameLike%", nativeQuery = true) //SQL
+	List<StockEntity> getNameLikeUsingSQL(@Param("nameLike")String nameLike);
 	
 	List<StockEntity> findByOrderByNameAsc();
 	

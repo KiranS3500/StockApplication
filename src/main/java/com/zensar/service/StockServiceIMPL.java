@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.zensar.Exception.InvalidStockIDException;
 import com.zensar.dto.Stock;
 import com.zensar.entity.StockEntity;
 import com.zensar.repo.StockRepository;
@@ -45,7 +46,7 @@ public class StockServiceIMPL implements StockService{
 			Stock stock = convertStockEntityToStockDTO(s);
 			return stock;
 		}
-		return null;
+		throw new InvalidStockIDException(""+stockId);
 	}
 
 	@Override
