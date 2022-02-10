@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.aspectj.weaver.tools.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,8 @@ import io.swagger.annotations.ApiParam;
 public class StockController {
 
 @Autowired
+@Qualifier(value = "mongoStockService")
+
 public StockService stockService;
 private static List<Stock> stocks = new ArrayList<Stock>();
 

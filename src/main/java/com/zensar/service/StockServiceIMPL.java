@@ -18,7 +18,7 @@ import com.zensar.dto.Stock;
 import com.zensar.entity.StockEntity;
 import com.zensar.repo.StockRepository;
 
-@Service
+@Service(value = "sqlStockService")
 public class StockServiceIMPL implements StockService{
 
 	@Autowired
